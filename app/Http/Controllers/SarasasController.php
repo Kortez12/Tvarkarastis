@@ -12,8 +12,11 @@ class SarasasController extends Controller
 {
     public function index()
     {
-        // dd($user->masina);
-        return view('sarasas')->with('destytojai', Destytojai::all())->with('grupes', Grupes::all())->with('patalpos', Patalpos::all())->with('dalykai', Dalykai::all());
-        // return view('home')->with('knygos', $user->muzika);
+        $destytojai = Destytojai::all();
+        $grupes = Grupes::orderByRaw("pavadinimas asc, kodas asc")->get();
+        $patalpos = Patalpos::orderByRaw("rumai asc, numeris asc")->get();;
+        $paskaitos = Dalykai::orderBy('dalykas', 'asc')->get();
+
+        return view('sarasas', compact('destytojai', 'grupes', 'patalpos', 'paskaitos'));
     }
 }

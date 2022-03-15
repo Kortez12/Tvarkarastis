@@ -19,8 +19,7 @@ class Grupes extends Model
 
     public function grup()
     {
-
-    return $this->hasMany(Tvarkarastis::class, 'grupes_id', 'id');
-
+        return $this->hasMany(Tvarkarastis::class, 'grupes_id', 'id');
     }
+
 }

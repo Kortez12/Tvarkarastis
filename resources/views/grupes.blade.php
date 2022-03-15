@@ -1,19 +1,25 @@
 @extends('layouts.app')
-
 @section('content')
 
-<div class="container py-4">
-    <div class="row justify-content-center">
-        <div class="col-md-6 mx-auto ">
+<div class="container py-5">
+    <div class="row justify-content-center rounded-2">
+        <div class="col-md-8">
+            <div class="card rounded">
+                <div class="card-header bg-dark text-white h4">
+                    <p class="text-center">Grupių sąrašas</p>
+                </div>
+                <div class="card-body">
+                    @foreach ($grupes as $grupe)
+                    <div class="d-inline">
+                        {{-- <a class="btn btn-outline-primary my-2" href={{ url("/grupes/{$grupe->pavadinimas}/{$grupe->kodas}") }}> {{$grupe->pavadinimas }}{{$grupe->kodas}}</a> --}}
+                        <a class="btn btn-outline-primary my-2" href={{ url("/grupes/{$grupe->id}") }}> {{$grupe->pavadinimas }}{{$grupe->kodas}}</a>
 
-
-            @foreach ($grupes as $grupe)
-            {{-- <a class="btn btn-link" href="{{ url('/grupess/'.$grupe->pavadinimas.$grupe->kodas) }}">{{$grupe->pavadinimas }}{{$grupe->kodas}}</a> --}}
-            <a class="btn btn-link" href={{ url("/grupess/{$grupe->id}") }}> {{$grupe->pavadinimas }}{{$grupe->kodas}}</a>
-            @endforeach
-            {{-- <p class="h2">Prisijungėte, {{ Auth()->user()->vardas }}</p> --}}
+                    </div>
+                    @endforeach
+                </div>
+            </div>
         </div>
-        {{-- {{-- </div> --}}
     </div>
-    {{-- </div> --}}
-    @endsection
+</div>
+
+@endsection

@@ -21,12 +21,12 @@ class PatalposController extends Controller
     public function store(Request $request){
 
         $this->validate($request, [
-            'pavadinimas' => 'required|string',
+            'rumai' => 'required|string',
             'numeris' => 'required'
         ]);
 
         $patalpos = new Patalpos();
-        $patalpos->pavadinimas = $request->input('pavadinimas');
+        $patalpos->rumai = $request->input('rumai');
         $patalpos->numeris = $request->input('numeris');
         $patalpos->save();
 

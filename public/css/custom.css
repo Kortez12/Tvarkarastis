@@ -1,7 +1,18 @@
-body {
+/* body {
     background-color: #aecfb6;
 }
 
 .bg-green {
     background-color: #85e69f;
+} */
+
+.w-90 {
+    width: 90% !important;
+}
+
+.froboto {
+    font-family: 'Roboto', sans-serif;
+}
+.ffredoka {
+    font-family: 'Fredoka', sans-serif;
 }

@@ -5,15 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Dalykai extends Model
+class Laikas extends Model
 {
     use HasFactory;
 
-    protected $table = 'dalykai';
-
-    protected $fillable = [
-        'dalykas'
-    ];
-
-    
+    protected $table = 'laikas';
 }

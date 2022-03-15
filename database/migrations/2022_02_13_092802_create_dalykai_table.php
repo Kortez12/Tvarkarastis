@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('dalykai', function (Blueprint $table) {
             $table->id();
-            $table->string('pavadinimas');
+            $table->string('dalykas');
             $table->timestamps();
         });
     }

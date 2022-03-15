@@ -7,7 +7,7 @@
                 @csrf
                 <div class="p-1">
                     <label class="form-label" class="form-label">Pavadinimas</label>
-                    <input type="text" name="pavadinimas" class="form-control @error('pavadinimas') is-invalid @enderror">
+                    <input type="text" name="rumai" class="form-control @error('pavadinimas') is-invalid @enderror">
                     @error('pavadinimas')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

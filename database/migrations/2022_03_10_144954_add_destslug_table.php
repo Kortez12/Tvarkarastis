@@ -13,11 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('patalpos', function (Blueprint $table) {
-            $table->id();
-            $table->string('rumai');
-            $table->integer('numeris');
-            $table->timestamps();
+        Schema::table('destytojai', function (Blueprint $table) {
+            $table->string('slug')->nullable()->after('email');
         });
     }
 
@@ -28,6 +25,5 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('patalpos');
     }
 };

@@ -16,9 +16,6 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka&family=Roboto:ital@0;1&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -26,8 +23,8 @@
 </head>
 
 <body>
-    <main class="py-0 froboto">
-        @include('inc.navbar')
+    <main class="py-0">
+        @include('inc.auth')
         @include('inc.messages')
         @yield('content')
     </main>

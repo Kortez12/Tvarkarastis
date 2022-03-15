@@ -15,10 +15,12 @@ return new class extends Migration
     {
         Schema::create('tvarkarastis', function (Blueprint $table) {
             $table->id();
+            $table->integer('grupes_id');
+            $table->integer('laikas_id');
+            $table->integer('dienos_id');
             $table->integer('paskaitos_id');
-            $table->integer('dalykas_id');
-            $table->integer('dest_id');
-            $table->integer('grupe_id');
+            $table->integer('destytojai_id');
+            $table->integer('patalpos_id');
             $table->timestamps();
         });
     }
@@ -33,3 +35,4 @@ return new class extends Migration
         Schema::dropIfExists('tvarkarastis');
     }
 };
+

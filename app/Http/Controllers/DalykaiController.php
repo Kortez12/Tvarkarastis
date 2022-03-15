@@ -25,7 +25,7 @@ class DalykaiController extends Controller
         ]);
 
         $dalykai = new Dalykai();
-        $dalykai->pavadinimas = $request->input('pavadinimas');
+        $dalykai->dalykas = $request->input('pavadinimas');
         $dalykai->save();
 
         return redirect()->back()->with('success', 'Dalykas pridėtas');
