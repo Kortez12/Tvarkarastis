@@ -12,7 +12,7 @@ class SarasasController extends Controller
 {
     public function index()
     {
-        $destytojai = Destytojai::all();
+        $destytojai = Destytojai::orderByRaw('pavarde asc, vardas asc')->get();
         $grupes = Grupes::orderByRaw("pavadinimas asc, kodas asc")->get();
         $patalpos = Patalpos::orderByRaw("rumai asc, numeris asc")->get();;
         $paskaitos = Dalykai::orderBy('dalykas', 'asc')->get();

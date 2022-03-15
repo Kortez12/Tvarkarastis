@@ -4,9 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Destytojai;
-use App\Models\Dienos;
-use App\Models\Tvarkarastis;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 
 class DestytojaiController extends Controller
@@ -47,57 +44,29 @@ class DestytojaiController extends Controller
     {
         $destytojas = Destytojai::find($dest)->first();
 
-        $dienos = Dienos::all();
-        $tvs = [];
 
-        
-        $sav = array($dienos);
+        $dienos = array(
+            array(""),
+            array("Pirmadienis"),
+            array("Antradienis"),
+            array("Trečiadienis"),
+            array("Ketvirtadienis"),
+            array("Penktadienis")
+        );
 
-        for ($i = 0; $i <= 4; $i++) {
+        for ($i = 1; $i <= 5; $i++) {
             $tab = DB::table('tvarkarastis')
                 ->select('*', 'tvarkarastis.id as tvark_id')
+                ->where('destytojai_id', $dest->id)
                 ->leftJoin('grupes', 'tvarkarastis.grupes_id', 'grupes.id')
                 ->leftJoin('laikas', 'tvarkarastis.laikas_id', 'laikas.id')
-                ->leftJoin('dienos', 'tvarkarastis.dienos_id', 'dienos.id')
                 ->leftJoin('dalykai', 'tvarkarastis.paskaitos_id', 'dalykai.id')
                 ->leftJoin('destytojai', 'tvarkarastis.destytojai_id', 'destytojai.id')
                 ->leftJoin('patalpos', 'tvarkarastis.patalpos_id', 'patalpos.id')
-                ->where('destytojai_id', $dest->id)
-                ->
+                ->where('dienos_id', $i)
                 ->get();
-            array_push($tvs[$i], $tab);
+            array_push($dienos[$i], $tab);
         }
-        return $tvs;
-        // return $tvarkarastis;
-
-        return view('dtv', compact('dest', 'tab', 'destytojas', 'sav'));
-
-        // $dienos = array(
-        //     array(""),
-        //     array("Pirmadienis"),
-        //     array("Antradienis"),
-        //     array("Trečiadienis"),
-        //     array("Ketvirtadienis"),
-        //     array("Penktadienis"),
-        // );
-        // for ($i = 1; $i <= 5; $i++) {
-        //     $laikinas = DB::table('tvarkarastis')
-        //         ->select('*', 'tvarkarastis.id as tvark_id')
-        //         ->where('grupes_id', $request->id)
-        //         ->Join('dalykai', 'tvarkarastis.paskaitos_id', '=', 'dalykai.id')
-        //         ->Join('laikas', 'tvarkarastis.laikas_id', '=', 'laikas.id')
-        //         ->Join('destytojai', 'tvarkarastis.destytojai_id', '=', 'destytojai.id')
-        //         ->Join('patalpos', 'tvarkarastis.patalpos_id', '=', 'patalpos.id')
-        //         ->where('dienos_id', $i)
-        //         ->get();
-        //     array_push($dienos[$i], $laikinas);
-        // }
-        // $destytojai = Tvarkarastis::where('destytojai_id', $request->id)->get();
-
-        // return $destytojai;
-
-        // return view('dtv', compact('dienos', 'laikinas', 'destytojai', 'grupes', 'patalpos', 'paskaitos', 'valandos', 'dienoss'))->with('pos', $pos)->with('tvarkarastis', $tvarkarastis);
-
-        // return view('dtv', compact('dest', 'destytojas'));
+        return view('dtv', compact('dest', 'destytojas', 'dienos', 'tab'));
     }
 }

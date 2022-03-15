@@ -17,12 +17,14 @@ class TvarkarastisController extends Controller
     public function store(Request $request)
     {
         $tvarks = Tvarkarastis::where('grupes_id', $request->input('grupe_id'))->where('dienos_id', $request->input('dienos_id'))->where('laikas_id', $request->input('valandos_id'));
+        $dest = Tvarkarastis::where('destytojai_id', $request->input('dest_id'))->where('dienos_id', $request->input('dienos_id'))->where('laikas_id', $request->input('valandos_id'));
         // if(Tvarkarastis::where('grupes_id', $request->input('grupe_id'))->where('dienos_id', $request->input('dienos_id'))->where('laikas_id', $request->input('valandos_id'))->exists())
         // return "yra";
         // else
         // return "nera";
 
-        if ($tvarks->exists()) {
+
+        if ($tvarks->exists() or $dest->exists()) {
             return redirect()->back()->with('error', 'Laikas jau egzistuoja!');
         } else {
             $tvark = new Tvarkarastis();
