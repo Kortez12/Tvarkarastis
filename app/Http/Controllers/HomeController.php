@@ -31,10 +31,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (auth::guest())
-            return view('sarasas');
-        else
-            return redirect(url('/sarasas'));
+
+        return redirect(route('home'));
+        // if (auth::guest())
+        //     return view('sarasas');
+        // else
+        //     return redirect(url('/sarasas'));
     }
 
     public function dalyk()
