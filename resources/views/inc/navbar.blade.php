@@ -42,10 +42,12 @@
 
 
                         <div class="dropdown-menu dropdown-menu-end text-center" aria-labelledby="navbarDropdown">
+                            @if (Auth::check() && Auth::user()->isAdmin == 1)
                             <a class="btn btn-primary w-90 my-1" href="{{ url('/prideti/grupe') }}">Pridėti grupes</a>
                             <a class="btn btn-primary w-90 my-1" href="{{ url('/prideti/patalpas') }}">Pridėti patalpas</a>
                             <a class="btn btn-primary w-90 my-1" href="{{ url('/prideti/destytoja') }}">Pridėti dėstytojus</a>
                             <a class="btn btn-primary w-90 my-1" href="{{ url('/prideti/dalyka') }}">Pridėti dalykus</a>
+                            @endif
 
                             <a class="btn btn-danger w-90 my-1" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

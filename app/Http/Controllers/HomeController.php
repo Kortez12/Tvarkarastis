@@ -31,26 +31,24 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(auth::guest())
-        return view('sarasas');
+        if (auth::guest())
+            return view('sarasas');
         else
-        return redirect(url('/sarasas'));
+            return redirect(url('/sarasas'));
     }
 
     public function dalyk()
     {
-        $destytojai = Destytojai::orderByRaw('vardas asc, pavarde asc')->get();
+        $destytojai = Destytojai::orderByRaw('pavarde asc, vardas asc')->get();
         $grupes = Grupes::orderByRaw("pavadinimas asc, kodas asc")->get();
         $patalpos = Patalpos::orderByRaw('rumai asc, numeris asc')->get();
         $paskaitos = Dalykai::orderBy('dalykas', 'asc')->get();
         $valandos = Laikas::all();
         $dienos = Dienos::all();
 
-        if(!auth::guest())
-        {
-        return view('sarasas', compact('destytojai', 'grupes', 'patalpos', 'paskaitos', 'valandos', 'dienos'));
-        }
-        else
-        return "Tuščia";
+        if (!auth::guest()) {
+            return view('sarasas', compact('destytojai', 'grupes', 'patalpos', 'paskaitos', 'valandos', 'dienos'));
+        } else
+            return "Tuščia";
     }
 }
