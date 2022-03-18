@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Dalykai;
-use App\Models\Destytojai;
 use App\Models\Dienos;
 use App\Models\Grupes;
 use App\Models\Laikas;
+use App\Models\Dalykai;
 use App\Models\Patalpos;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Models\Destytojai;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
+
+
 
 class HomeController extends Controller
 {
