@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
 
+Masasasasasasasas
+sadas
+
 <div class="container py-5">
     <div class="ffredoka text-center h3">
         <p>{{ $destytojas->vardas.' '.$destytojas->pavarde }}</p>
