@@ -50,12 +50,10 @@ Route::middleware(['AdminAccess'])->group(function () {
     });
 });
 
-// Route::get("/destytojas/");
-
 Route::get('/grupes', [GrupesController::class, 'show'])->name('grupiu.sarasas');
 Route::get("/grupes/{id}", [GrupesController::class, 'grupid']);;
 
-Route::put('/pdf-gen', [PDFController::class, 'generuoti'])->name('pdf.pdf');
+Route::put('/pdf-gen/', [PDFController::class, 'generuoti'])->name('pdf.pdf');
 
 Route::get('/sarasas', [SarasasController::class, 'index'])->name('sss');
 

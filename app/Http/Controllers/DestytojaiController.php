@@ -44,6 +44,7 @@ class DestytojaiController extends Controller
     {
         $destytojas = Destytojai::find($dest)->first();
 
+
         $dienos = array(
             array(""),
             array("Pirmadienis"),
